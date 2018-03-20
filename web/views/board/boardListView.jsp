@@ -36,6 +36,8 @@ function showWriteForm(){
 </div>
 <%} %>
 
+
+
 <br>
 <table align="center" border="1" cellspacing="0" width="700">
 <tr><th>번호</th><th>제목</th><th>작성자</th><th>날자</th><th>조회수</th><th>첨부파일</th></tr>
@@ -76,26 +78,32 @@ function showWriteForm(){
 <%} %>
 
 
-<% if((currentPage-10)>=startPage){ %>
-[prev]&nbsp;
-<%}else{ %>
+<% if((currentPage-10)>=startPage && (currentPage-10)>1){ %>
 <a href="/first/blist?page=<%=startPage-10 %>">[prev]</a>
-<%} %>
+
+
+<%}else{ %>
+[prev]&nbsp;
+<%}%>
 
 
 <%for(int p= startPage; p<=endPage; p++){ 
-		if(p==currentPage){%>
-		<font color="red" size="4">[ <%=p%>]</font>
+		
+	if(p==currentPage){%>
+		
+		<font color="red" size="4">[<%=p%>]</font>
+		
 		<%}else{ %>
+		
 		<a href="/first/blist?page=<%= p %>"><%= p %></a>
 		
 <%}} %>
 
 
-<% if((currentPage+10)<=endPage){ %>
-[Next]&nbsp;
-<%}else{ %>
+<% if((currentPage+10)<=endPage && (currentPage+10)< maxPage ){ %>
 <a href="/first/blist?page=<%=endPage+10 %>">[Next]</a>
+<%}else{ %>
+[Next]&nbsp;
 <%} %>
 
 <% if(currentPage>=maxPage){ %>

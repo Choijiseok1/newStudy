@@ -25,5 +25,16 @@ public BoardService() {
 		
 		return list;
 	}
+	public int insertNotice(Board bo) {
+		Connection con=getConnection();
+		
+		int result=new BoardDao().insertBoard(con,bo);
+		if(result>0)
+			commit(con);
+		else
+			rollback(con);
+			close(con);
+		return result;
+	}
 
 }

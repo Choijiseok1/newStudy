@@ -87,6 +87,29 @@ public class BoardDao {
 		
 		return list;
 	}
+
+	public int insertBoard(Connection con, Board bo) {
+		int result=0;
+		PreparedStatement pstmt = null;
+
+		String query="insert into board values((select max(board_num)+1 from board),?,?,?,?,?,sysdate,0,(select max(board_num)+1 from board),Null,default,default)";
+		try {
+			pstmt=con.prepareStatement(query);
+			pstmt.setString(1, bo.getBoardTitle());
+			pstmt.setString(2, bo.getBoardWriter());
+			pstmt.setString(3, bo.getBoardContent());
+			pstmt.setString(4, bo.getBoardOriginalFileName());
+			pstmt.setString(5, bo.getBoardRenameFileName());
+			result=pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
 	
 	
 }
