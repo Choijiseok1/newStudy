@@ -17,7 +17,7 @@
 <head>
 <script type="text/javascript">
 function showWriteForm(){
-	location.href="views/board/boardWriteForm.jsp";	
+	location.href="views/board/boardWriteForm.jsp?userid=<%=loginUser.getUserId()%>";	
 }
 
 </script>

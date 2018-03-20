@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" errorPage="./boardError.jsp" %>
     <% 
-    
+  	 String id=(String)request.getParameter("userid");
     %>
     
 <!DOCTYPE html>
@@ -13,9 +13,8 @@
 <body>
 <h2 Style="align=center">게시글 등록 페이지</h2>
 <%@ include file="../../header.jsp" %>
-
 <hr style="clear: both;">
-<form action="/first/blist" method="post" enctype="multipart/form-data">
+<form action="/first/binst" method="post" enctype="multipart/form-data">
 	<table align="center" width="600">
 		<tr>
 			<th>제목</th>			
@@ -23,7 +22,7 @@
 		</tr>
 		<tr>
 			<th>작성자</th>			
-			<td><input type="text" name="writer" value="" readonly></td>			
+			<td><input type="text" name="writer" value="<%=id%>" readonly></td>			
 		</tr>
 		<tr>
 			<th>첨부 파일</th>

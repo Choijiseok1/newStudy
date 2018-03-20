@@ -25,7 +25,7 @@ public BoardService() {
 		
 		return list;
 	}
-	public int insertNotice(Board bo) {
+	public int insertBoard(Board bo) {
 		Connection con=getConnection();
 		
 		int result=new BoardDao().insertBoard(con,bo);
@@ -36,5 +36,14 @@ public BoardService() {
 			close(con);
 		return result;
 	}
-
+	public Board selectByNo(int boardnum) {
+	Connection con=getConnection();
+		
+		Board bo=new BoardDao().selectByNo(con,boardnum);
+		
+		close(con);
+		
+		
+		return bo;
+	}
 }

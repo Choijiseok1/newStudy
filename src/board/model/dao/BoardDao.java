@@ -110,6 +110,35 @@ public class BoardDao {
 		
 		return result;
 	}
+
+	public Board selectByNo(Connection con, int boardnum) {
+	Board bo= new Board();
+	Statement stmt=null;
+	ResultSet rset=null;
+	String query="select * from Board where BOARD_NUM="+boardnum;
+	try {
+		stmt=con.createStatement();
+		rset=stmt.executeQuery(query);
+	rset.next();
+	bo.setBoardNum(boardnum);
+	bo.setBoardTitle(rset.getString("BOARD_TITLE"));
+	bo.setBoardWriter(rset.getString("BOARD_WRITER"));
+	bo.setBoardContent(rset.getString("BOARD_CONTENT"));
+	if(rset.getString("BOARD_ORIGINAL_FILENAME")!=null) {
+	bo.setBoardOriginalFileName(rset.getString("BOARD_ORIGINAL_FILENAME"));
+	
+	}
+	bo.setBoardDate(rset.getDate("BOARD_DATE"));
+	
+	} catch (Exception e) {
+	e.printStackTrace();
+	}finally {
+		
+	}
+	
+		
+	return bo;
+	}
 	
 	
 }
