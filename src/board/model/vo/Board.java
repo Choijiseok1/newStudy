@@ -13,7 +13,7 @@ public class Board implements java.io.Serializable{
 	private String boardRenameFileName;
 	private int boardRef;	//참조하는 원글번호
 	private int boardReplyRef;  //참조하는 댓글 번호, 원글은 0
-	private int boardReplyLev;  //원글:0, 원글의댓글:1, 댓글의댓글:2
+	private int boardLevel;  //원글:0, 원글의댓글:1, 댓글의댓글:2
 	private int boardReplySeq;  //댓글의 순번, 최근 댓글이 1
 	private int boardReadCount; //읽은 조회수
 	private Date boardDate;     //작성날짜
@@ -21,7 +21,8 @@ public class Board implements java.io.Serializable{
 	public Board() {}	
 	
 	public Board(int boardNum, String boardWriter, String boardTitle, String boardContent, String boardOriginalFileName,
-			String boardRenameFileName, int boardRef, int boardReplyRef, int boardReplyLev, int boardReplySeq,
+			String boardRenameFileName, int boardRef, 
+			int boardReplyRef, int boardLevel, int boardReplySeq,
 			int boardReadCount, Date boardDate) {
 		super();
 		this.boardNum = boardNum;
@@ -32,7 +33,7 @@ public class Board implements java.io.Serializable{
 		this.boardRenameFileName = boardRenameFileName;
 		this.boardRef = boardRef;
 		this.boardReplyRef = boardReplyRef;
-		this.boardReplyLev = boardReplyLev;
+		this.boardLevel = boardLevel;
 		this.boardReplySeq = boardReplySeq;
 		this.boardReadCount = boardReadCount;
 		this.boardDate = boardDate;
@@ -103,11 +104,11 @@ public class Board implements java.io.Serializable{
 	}
 
 	public int getBoardReplyLev() {
-		return boardReplyLev;
+		return boardLevel;
 	}
 
-	public void setBoardReplyLev(int boardReplyLev) {
-		this.boardReplyLev = boardReplyLev;
+	public void setBoardLevel(int boardLevel) {
+		this.boardLevel = boardLevel;
 	}
 
 	public int getBoardReplySeq() {
@@ -148,7 +149,7 @@ public class Board implements java.io.Serializable{
 			+ this.boardRenameFileName + ", "
 			+ this.boardRef + ", "
 			+ this.boardReplyRef + ", "
-			+ this.boardReplyLev + ", "
+			+ this.boardLevel + ", "
 			+ this.boardReplySeq;
 	}
 }
