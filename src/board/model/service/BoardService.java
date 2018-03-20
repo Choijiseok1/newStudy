@@ -1,4 +1,4 @@
-package board.modell.service;
+package board.model.service;
 
 public class BoardService {
 
