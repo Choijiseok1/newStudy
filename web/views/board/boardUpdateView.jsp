@@ -41,7 +41,7 @@
 	<input type="file" name="upfile">
 </td></tr>
 <tr><th>내용</th>
-<td><textarea rows="7" cols="50" name="bcontent"><%=board.getBoardContent() %></textarea></td></tr>
+<td><textarea rows="7" cols="50" name="bcontent"><%= board.getBoardContent() %></textarea></td></tr>
 <tr><th colspan="2">
 	<input type="submit" value="수정하기">
 </th></tr>
@@ -49,14 +49,25 @@
 </form>
 <% }else{ //댓글 수정 %>
 <form action="/first/breplyup" method="post">
+<input type="hidden" name="bnum" value="<%= board.getBoardNum() %>">
+<input type="hidden" name="page" value="<%= currentPage %>">
 <table align="center">
-<tr><th>제 목</th><td></td></tr>
-<tr><th>작성자</th><td></td></tr>
-<tr><th>내 용</th><td></td></tr>
-<tr><th colspan="2"></th></tr>
+<tr><th>제 목</th>
+<td><input type="text" name="btitle" 
+	value="<%= board.getBoardTitle() %>"></td></tr>
+<tr><th>작성자</th>
+<td><input type="text" name="bwriter" readonly 
+	value="<%= board.getBoardWriter() %>"></td></tr>
+<tr><th>내 용</th>
+<td><textarea rows="7" cols="50" name="bcontent"><%= board.getBoardContent() %></textarea></td></tr>
+<tr><th colspan="2">
+<input type="submit" value="수정하기">
+</th></tr>
 </table>
 </form>
 <% } %>
+<br>
+<h4 align="center"><a href="/first/blist?page=<%= currentPage %>">목록</a></h4>
 <hr>
 <%@ include file="../../footer.html" %>
 </body>
