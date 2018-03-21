@@ -276,7 +276,7 @@ public class BoardDao {
 			int result=0;
 			PreparedStatement pstmt=null;
 					
-			String query="update board set board_title=?, board_content=?, where board_num=?";
+			String query="update board set BOARD_TITLE=?,BOARD_CONTENT=? where BOARD_NUM=?";
 			try {
 				pstmt=con.prepareStatement(query);
 				pstmt.setString(1, board.getBoardTitle());
@@ -284,11 +284,32 @@ public class BoardDao {
 				pstmt.setInt(3, board.getBoardNum());
 				result=pstmt.executeUpdate();				
 			} catch (Exception e) {
-				// TODO: handle exception
+			e.printStackTrace();
 			}finally {
 				close(pstmt);
 			}
 		return result;
+	}
+
+	public int updateBoard(Connection con, Board bo) {
+		int re=0;
+		PreparedStatement pstmt=null;
+		String query="update board set BOARD_TITLE=?,BOARD_CONTENT=?,BOARD_ORIGINAL_FILENAME=?,BOARD_RENAME_FILENAME=? where BOARD_NUM=?";
+		try {
+			pstmt=con.prepareStatement(query);
+			pstmt.setString(1, bo.getBoardTitle());
+			pstmt.setString(2, bo.getBoardContent());
+			pstmt.setString(3, bo.getBoardOriginalFileName());
+			pstmt.setString(4, bo.getBoardRenameFileName());
+			pstmt.setInt(5, bo.getBoardNum());
+			re=pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return re;
 	}
 	
 	

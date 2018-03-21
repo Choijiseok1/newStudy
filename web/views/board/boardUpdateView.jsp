@@ -18,8 +18,8 @@
 <%= board.getBoardNum() %>번 게시글 수정페이지</h2>
 <br>
 <% if(board.getBoardLevel() == 0){ //원글 수정 %>
-<form action="/first/boriginup" method="post" 
-	enctype="multipart/form-data">
+<form action="/first/boriginup" method="post" enctype="multipart/form-data">
+	
 <input type="hidden" name="bnum" value="<%= board.getBoardNum() %>">
 <input type="hidden" name="page" value="<%= currentPage %>">
 <input type="hidden" name="ofile" 
@@ -35,7 +35,7 @@
 	value="<%= board.getBoardWriter() %>"></td></tr>
 <tr><th>첨부파일</th>
 <td>
-	<% if(board.getBoardOriginalFileName() != null){ %>
+<% if(board.getBoardOriginalFileName() != null){ %>
 		<%= board.getBoardOriginalFileName() %> <br>
 	<% } %>
 	<input type="file" name="upfile">

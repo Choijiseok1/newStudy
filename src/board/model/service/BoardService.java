@@ -98,6 +98,18 @@ public class BoardService {
 		return result;
 	}
 
+	public int updateBoard(Board bo) {
+		Connection con=getConnection();
+		int result=new BoardDao().updateBoard(con,bo);
+		if(result>0)
+			commit(con);
+		else 
+			rollback(con);
+		close(con);
+		return result;
+	}
+
+	
 	
 }
 
