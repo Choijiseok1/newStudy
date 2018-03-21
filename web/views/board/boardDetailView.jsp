@@ -32,17 +32,21 @@
         <td><% if(board.getBoardOriginalFileName() == null){ %>
         	첨부파일 없음 
         	<% }else{ %>
-        	<a href="/first/bfdown?ofile=<%= board.getBoardOriginalFileName() %>&rfile=<%= board.getBoardRenameFileName() %>"><%= board.getBoardOriginalFileName() %></a>         
+        	<a href="/first/bfdown?ofile=<%= board.getBoardOriginalFileName() %>&rfile=<%= board.getBoardRenameFileName() %>">
+        	<%= board.getBoardOriginalFileName() %></a>         
         	<% } %> 
         </td> 
     </tr>
     <tr align="center" valign="middle"> 
         <td colspan="2"> 
          <% if(loginUser != null){ %>            
-            <a href="/first/views/board/boardReplyForm.jsp?bnum=<%= board.getBoardNum() %>&page=<%= currentPage %>"> [댓글달기] </a> &nbsp;&nbsp; 
+            <a href="/first/views/board/boardReplyForm.jsp?bnum=<%= board.getBoardNum() %>&page=<%= currentPage %>"> 
+            [댓글달기] </a> &nbsp;&nbsp; 
          <% if(loginUser.getUserId().equals(board.getBoardWriter()) == true){ %>
-            <a href="/first/bupview?bnum=<%= board.getBoardNum() %>&page=<%= currentPage %>"> [수정페이지로 이동] </a> &nbsp;&nbsp; 
-            <a href="/first/bdelete?bnum=<%= board.getBoardNum() %>"> [글삭제] </a> &nbsp;&nbsp; 
+            <a href="/first/bupview?bnum=<%= board.getBoardNum() %>&page=<%= currentPage %>"> 
+            [수정페이지로 이동] </a> &nbsp;&nbsp; 
+            <a href="/first/bdelete?bnum=<%= board.getBoardNum() %>"> 
+            [글삭제] </a> &nbsp;&nbsp; 
          <% }} %>
             <a href="/first/blist?page=<%= currentPage %>">[목록]</a>            
         </td> 
@@ -52,3 +56,8 @@
 <%@ include file="../../footer.html" %>
 </body>
 </html>
+
+
+
+
+

@@ -16,13 +16,13 @@ import board.model.vo.Board;
  * Servlet implementation class BoardDetailServlet
  */
 @WebServlet("/bdetail")
-public class BoardDetail extends HttpServlet {
+public class BoardDetailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public BoardDetail() {
+	public BoardDetailServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -42,7 +42,7 @@ public class BoardDetail extends HttpServlet {
 
 		bservice.addReadCount(boardNum);
 		// 해당 게시글의 조회수 1 증가 처리
-		Board board = bservice.selectByNo(boardNum);
+		Board board = bservice.selectBoard(boardNum);
 
 		response.setContentType("text/html; charset=utf-8");
 		RequestDispatcher view = null;

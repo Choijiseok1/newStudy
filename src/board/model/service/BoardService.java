@@ -1,51 +1,41 @@
 package board.model.service;
+
 import static common.JDBCTemplate.*;
-
-import java.sql.Connection;
+import java.sql.*;
 import java.util.ArrayList;
-
 
 import board.model.dao.BoardDao;
 import board.model.vo.Board;
+
 public class BoardService {
-public BoardService() {
-	// TODO Auto-generated constructor stub
-}
+	public BoardService() {}
+
 	public int getListCount() {
-	Connection con=getConnection();
-	int listCount= new BoardDao().getListCount(con);
-	close(con);
-	
-	return listCount;
+		Connection con = getConnection();
+		int listCount = new BoardDao().getListCount(con);
+		close(con);
+		return listCount;
 	}
+
 	public ArrayList<Board> selectList(int currentPage, int limit) {
-		Connection con=getConnection();
-	
-		ArrayList<Board> list=new BoardDao().selectList(con,currentPage,limit);
-		
+		Connection con = getConnection();
+		ArrayList<Board> list = 
+			new BoardDao().selectList(con, currentPage, limit);
+		close(con);
 		return list;
 	}
-	public int insertBoard(Board bo) {
-		Connection con=getConnection();
-		
-		int result=new BoardDao().insertBoard(con,bo);
-		if(result>0)
+
+	public int insertBoard(Board b) {
+		Connection con = getConnection();
+		int result = new BoardDao().insertBoard(con, b);
+		if(result > 0)
 			commit(con);
 		else
 			rollback(con);
-			close(con);
+		close(con);
 		return result;
 	}
-	public Board selectByNo(int boardnum) {
-	Connection con=getConnection();
-		
-		Board bo=new BoardDao().selectByNo(con,boardnum);
-		
-		close(con);
-		
-		
-		return bo;
-	}
+
 	public void addReadCount(int boardNum) {
 		Connection con = getConnection();
 		int result = new BoardDao().addReadCount(con, boardNum);
@@ -57,4 +47,64 @@ public BoardService() {
 		return;
 	}
 
+	public Board selectBoard(int boardNum) {
+		Connection con = getConnection();
+		Board b = new BoardDao().selectBoard(con, boardNum);
+		close(con);
+		return b;
+	}
+
+	public void updateReplySeq(Board replyBoard) {
+		Connection con = getConnection();
+		int result = new BoardDao().updateReplySeq(con, replyBoard);
+		if(result > 0)
+			commit(con);
+		else
+			rollback(con);
+		close(con);
+		return;
+	}
+
+	public int insertReply(Board replyBoard) {
+		Connection con = getConnection();
+		int result = new BoardDao().insertReply(con, replyBoard);
+		if(result > 0)
+			commit(con);
+		else
+			rollback(con);
+		close(con);
+		return result;
+	}
+
+	public int deleteBoard(int boardNum) {
+		Connection con=getConnection();
+		int result=new BoardDao().deleteBoard(con,boardNum);
+		if(result>0)
+			commit(con);
+		else 
+			rollback(con);
+		close(con);
+		return result;
+	}
+
+	public int updateReply(Board board) {
+		Connection con=getConnection();
+		int result=new BoardDao().updateReply(con, board);
+		if(result>0)
+			commit(con);
+		else
+			rollback(con);
+		close(con);
+		return result;
+	}
+
+	
 }
+
+
+
+
+
+
+
+

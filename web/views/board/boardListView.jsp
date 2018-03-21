@@ -44,9 +44,9 @@ function showWriteForm(){
 <%for(Board b:list){ %>
 <tr>
 	<td align="center"><%=b.getBoardNum() %></td>
-	<td>   <% if(b.getBoardReplyLev()==1){ %>
+	<td>   <% if(b.getBoardLevel()==1){ %>
 	&nbsp;&nbsp; >
-	<%}else if(b.getBoardReplyLev()==2){ %>
+	<%}else if(b.getBoardLevel()==2){ %>
 	&nbsp;&nbsp;&nbsp;&nbsp; >>
 	<%} %>
 	<!-- 로그인 한 상태일때만 상세보기 링크처리 -->

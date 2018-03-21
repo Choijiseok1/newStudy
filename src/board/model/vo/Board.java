@@ -20,6 +20,13 @@ public class Board implements java.io.Serializable{
 	
 	public Board() {}	
 	
+	public Board(int boardNum, String boardTitle, String boardContent) {
+		super();
+		this.boardNum = boardNum;
+		this.boardTitle = boardTitle;
+		this.boardContent = boardContent;
+	}
+
 	public Board(int boardNum, String boardWriter, String boardTitle, String boardContent, String boardOriginalFileName,
 			String boardRenameFileName, int boardRef, 
 			int boardReplyRef, int boardLevel, int boardReplySeq,
@@ -103,7 +110,7 @@ public class Board implements java.io.Serializable{
 		this.boardReplyRef = boardReplyRef;
 	}
 
-	public int getBoardReplyLev() {
+	public int getBoardLevel() {
 		return boardLevel;
 	}
 
