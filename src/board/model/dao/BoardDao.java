@@ -126,7 +126,7 @@ public class BoardDao {
 	bo.setBoardContent(rset.getString("BOARD_CONTENT"));
 	if(rset.getString("BOARD_ORIGINAL_FILENAME")!=null) {
 	bo.setBoardOriginalFileName(rset.getString("BOARD_ORIGINAL_FILENAME"));
-	
+	bo.setBoardRenameFileName(rset.getString("BOARD_RENAME_FILENAME"));
 	}
 	bo.setBoardDate(rset.getDate("BOARD_DATE"));
 	
@@ -138,6 +138,29 @@ public class BoardDao {
 	
 		
 	return bo;
+	}
+
+	public int addReadCount(Connection con, int boardNum) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+
+		String query = "update board " 
+			+ "set board_readcount = board_readcount + 1 " 
+			+ "where board_num = ?";
+
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, boardNum);
+
+			result = pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+
+		return result;
 	}
 	
 	

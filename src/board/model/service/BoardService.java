@@ -46,4 +46,15 @@ public BoardService() {
 		
 		return bo;
 	}
+	public void addReadCount(int boardNum) {
+		Connection con = getConnection();
+		int result = new BoardDao().addReadCount(con, boardNum);
+		if(result > 0)
+			commit(con);
+		else
+			rollback(con);
+		close(con);
+		return;
+	}
+
 }
