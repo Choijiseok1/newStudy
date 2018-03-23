@@ -11,8 +11,9 @@ import member.model.vo.Member;
 /**
  * Servlet implementation class LogInServlet
  */
-@WebServlet("/login")
+//@WebServlet("/login")
 public class LoginServlet extends HttpServlet {
+	//서블릿은 http서블릿을 상속받은 후손이다.
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -20,6 +21,7 @@ public class LoginServlet extends HttpServlet {
      */
     public LoginServlet() {
        super();        
+       System.out.println("로그인 서블릿 ");
     }
 
 	/**
@@ -27,13 +29,10 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-				
-		 //로그인 요청 처리용 컨트롤러
+	
     	//System.out.println("로그인 서블릿 구동됨...")
     	//1. 전송온 값에 한글이 있을경우 인코딩 처리함.
-        request.setCharacterEncoding("utf-8");
-        
+    
         //2. 전송온 값 꺼내서 변수에 저장하기
         String userId = request.getParameter("userid");
         String userPwd = request.getParameter("userpwd");

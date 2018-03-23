@@ -44,8 +44,7 @@ public class MemberDao {
 				loginUser.setLastModified(rset.getDate("lastmodified"));
 			}
 			
-			System.out.println("dao : " + loginUser);
-			
+		
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

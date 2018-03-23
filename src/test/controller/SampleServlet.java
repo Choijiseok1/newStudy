@@ -1,21 +1,23 @@
-package member.controller;
+package test.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.*;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class LogoutServlet
+ * Servlet implementation class SampleServlet
  */
-//@WebServlet("/logout")
-public class LogoutServlet extends HttpServlet {
+@WebServlet("/samp")
+public class SampleServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LogoutServlet() {
+    public SampleServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -24,14 +26,8 @@ public class LogoutServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// <a> 태그의 전송방식은 무조건 겟
-		//로그 아웃 처리용 컨트롤러
-		HttpSession session = request.getSession(false);
-		if(session != null) {
-			session.invalidate();
-			response.sendRedirect("index.jsp");
-		}		
-		
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
