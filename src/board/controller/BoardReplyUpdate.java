@@ -32,15 +32,14 @@ public class BoardReplyUpdate extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 댓글 수정 처리용 컨트롤러
-		request.setCharacterEncoding("utf-8");
+		//request.setCharacterEncoding("utf-8");
 		
 		String boardTitle = request.getParameter("btitle");
 		String boardContent = request.getParameter("bcontent");
 		int boardNum = Integer.parseInt(request.getParameter("bnum"));
 		int  currentPage = Integer.parseInt(request.getParameter("page"));
 		
-		Board board = new Board(boardNum, 
-			boardTitle, 
+		Board board = new Board(boardNum, boardTitle, 
 								boardContent);
 		
 		int result = new BoardService().updateReply(board);

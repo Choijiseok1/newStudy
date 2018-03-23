@@ -15,7 +15,7 @@ import board.model.vo.Board;
 /**
  * Servlet implementation class BoardDetailServlet
  */
-@WebServlet("/bdetail")
+@WebServlet("/bdetail.ss")
 public class BoardDetailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

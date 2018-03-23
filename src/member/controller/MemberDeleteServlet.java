@@ -12,7 +12,7 @@ import member.model.service.MemberService;
 /**
  * Servlet implementation class MemberDeleteServlet
  */
-@WebServlet("/mdelete")
+@WebServlet("/mdelete.ss")
 public class MemberDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

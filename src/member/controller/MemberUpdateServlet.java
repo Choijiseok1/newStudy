@@ -15,7 +15,7 @@ import member.model.vo.Member;
 /**
  * Servlet implementation class MemberUpdateServlet
  */
-@WebServlet("/mupdate")
+@WebServlet("/mupdate.ss")
 public class MemberUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -33,7 +33,7 @@ public class MemberUpdateServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//회원 정보 수정 처리용 컨트롤러
 		//1. 전송온 값에 한글이 있을 경우 인코딩함
-		request.setCharacterEncoding("utf-8");
+		//request.setCharacterEncoding("utf-8");
 		
 		//2. 전송온 값 꺼내서 변수 또는 객체에 저장하기
 		Member member = new Member();

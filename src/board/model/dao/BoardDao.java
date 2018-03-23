@@ -1,4 +1,4 @@
-package board.model.dao;
+﻿package board.model.dao;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -255,16 +255,20 @@ public class BoardDao {
 	}
 
 	public int deleteBoard(Connection con, int boardNum) {
-		int result=0;
-		PreparedStatement pstmt= null;
-		String query="delete from board where board_num=?";
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String query = "delete from board "
+				+ "where board_num = ?";
+		
 		try {
-			pstmt=con.prepareStatement(query);
+			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, boardNum);
-			result=pstmt.executeUpdate();
+			
+			result = pstmt.executeUpdate();
 			
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}finally {
 			close(pstmt);
 		}
@@ -273,46 +277,60 @@ public class BoardDao {
 	}
 
 	public int updateReply(Connection con, Board board) {
-			int result=0;
-			PreparedStatement pstmt=null;
-					
-			String query="update board set BOARD_TITLE=?,BOARD_CONTENT=? where BOARD_NUM=?";
-			try {
-				pstmt=con.prepareStatement(query);
-				pstmt.setString(1, board.getBoardTitle());
-				pstmt.setString(2, board.getBoardContent());
-				pstmt.setInt(3, board.getBoardNum());
-				result=pstmt.executeUpdate();				
-			} catch (Exception e) {
-			e.printStackTrace();
-			}finally {
-				close(pstmt);
-			}
-		return result;
-	}
-
-	public int updateBoard(Connection con, Board bo) {
-		int re=0;
-		PreparedStatement pstmt=null;
-		String query="update board set BOARD_TITLE=?,BOARD_CONTENT=?,BOARD_ORIGINAL_FILENAME=?,BOARD_RENAME_FILENAME=? where BOARD_NUM=?";
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String query = "update board "
+				+ "set board_title = ?, "
+				+ "board_content = ? "
+				+ "where board_num = ?";				
+				
 		try {
-			pstmt=con.prepareStatement(query);
-			pstmt.setString(1, bo.getBoardTitle());
-			pstmt.setString(2, bo.getBoardContent());
-			pstmt.setString(3, bo.getBoardOriginalFileName());
-			pstmt.setString(4, bo.getBoardRenameFileName());
-			pstmt.setInt(5, bo.getBoardNum());
-			re=pstmt.executeUpdate();
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, board.getBoardTitle());
+			pstmt.setString(2, board.getBoardContent());
+			pstmt.setInt(3, board.getBoardNum());
+			
+			result = pstmt.executeUpdate();
+			
 		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
+		}finally{
 			close(pstmt);
 		}
 		
-		return re;
+		return result;
 	}
 	
-	
+	public int updateBoard(Connection con, Board board) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String query = "update board "
+				+ "set board_title = ?, "
+				+ "board_content = ?, "
+				+ "BOARD_ORIGINAL_FILENAME = ?, "
+				+ "BOARD_RENAME_FILENAME = ? "
+				+ "where board_num = ?";				
+				
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, board.getBoardTitle());
+			pstmt.setString(2, board.getBoardContent());
+			pstmt.setString(3, board.getBoardOriginalFileName());
+			pstmt.setString(4, board.getBoardRenameFileName());
+			pstmt.setInt(5, board.getBoardNum());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			close(pstmt);
+		}
+		
+		return result;
+	}
 }
 
 

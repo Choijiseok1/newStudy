@@ -18,7 +18,7 @@
 	<li><a href="/first/nlist">공지사항</a></li>
 	<li><a href="/first/blist?page=1">게시글</a></li>
 	<li><a href="">앨범</a></li>
-	<li><a href="">자료실</a></li>
+	<li><a href="/first/samp?action=ss">자료실</a></li>
 	
 	</ul>	
 	</nav>

@@ -25,7 +25,7 @@ public class NoticeFileDownServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//공지글 첨부 파일 다운 로드 처리용 컨트롤러
-		request.setCharacterEncoding("UTF-8");
+		//request.setCharacterEncoding("UTF-8");
 		
 		//웹 프로젝트 내에 파일이 저장된 폴더의 경로 정보 얻어오기
 		String readFolder = request.getSession().getServletContext().getRealPath("/notice_upload");

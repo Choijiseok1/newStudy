@@ -18,7 +18,7 @@ import notice.model.vo.Notice;
 /**
  * Servlet implementation class NoticeWriteServlet
  */
-@WebServlet("/nwrite")
+@WebServlet("/nwrite.ss")
 public class NoticeWriteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -36,7 +36,7 @@ public class NoticeWriteServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//파일 업로드 기능이 추가된 공지글 등록 처리용 컨트롤러
 		//1. 전송온 값에 한글이 있을 경우 인코딩 처리함
-		request.setCharacterEncoding("UTF-8");
+		//request.setCharacterEncoding("UTF-8");
 		
 		//업로드할 파일의 용량 제한들 10M로 제한
 		int maxSize = 1024 * 1024 * 10;

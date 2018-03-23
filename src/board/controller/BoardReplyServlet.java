@@ -15,7 +15,7 @@ import board.model.vo.Board;
 /**
  * Servlet implementation class BoardReplyServlet
  */
-@WebServlet("/breply")
+@WebServlet("/breply.ss")
 public class BoardReplyServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -32,7 +32,7 @@ public class BoardReplyServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 댓글달기 처리용 컨트롤러
-		request.setCharacterEncoding("utf-8");
+		//request.setCharacterEncoding("utf-8");
 		
 		int currentPage = Integer.parseInt(request.getParameter("page"));
 		int boardNum = Integer.parseInt(request.getParameter("bnum"));

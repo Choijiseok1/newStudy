@@ -42,11 +42,10 @@ public class JDBCTemplate {
 			con.setAutoCommit(false);
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("JDBCTemplate.getConnection() : "
-								+e.getMessage());
-		} finally {
-			
+			/*System.out.println("JDBCTemplate.getConnection() : "
+								+e.getMessage());*/
 		}
+		
 		return con;
 	}
 	

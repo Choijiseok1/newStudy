@@ -77,20 +77,9 @@ public class BoardService {
 	}
 
 	public int deleteBoard(int boardNum) {
-		Connection con=getConnection();
-		int result=new BoardDao().deleteBoard(con,boardNum);
-		if(result>0)
-			commit(con);
-		else 
-			rollback(con);
-		close(con);
-		return result;
-	}
-
-	public int updateReply(Board board) {
-		Connection con=getConnection();
-		int result=new BoardDao().updateReply(con, board);
-		if(result>0)
+		Connection con = getConnection();
+		int result = new BoardDao().deleteBoard(con, boardNum);
+		if(result > 0)
 			commit(con);
 		else
 			rollback(con);
@@ -98,18 +87,28 @@ public class BoardService {
 		return result;
 	}
 
-	public int updateBoard(Board bo) {
-		Connection con=getConnection();
-		int result=new BoardDao().updateBoard(con,bo);
-		if(result>0)
+	public int updateReply(Board board) {
+		Connection con = getConnection();
+		int result = new BoardDao().updateReply(con, board);
+		if(result > 0)
 			commit(con);
-		else 
+		else
 			rollback(con);
 		close(con);
 		return result;
 	}
-
 	
+	public int updateBoard(Board board) {
+		// 원글 수정 처리용
+		Connection con = getConnection();
+		int result = new BoardDao().updateBoard(con, board);
+		if(result > 0)
+			commit(con);
+		else
+			rollback(con);
+		close(con);
+		return result;
+	}
 	
 }
 

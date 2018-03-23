@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class BoardFileDownServlet
  */
-@WebServlet("/bfdown")
+@WebServlet("/bfdown.ss")
 public class BoardFileDownServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -34,7 +34,7 @@ public class BoardFileDownServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// 게시글 첨부파일 다운로드 처리용 컨트롤러
-		request.setCharacterEncoding("utf-8");
+		//request.setCharacterEncoding("utf-8");
 
 		// 프로젝트 내에 파일이 저장된 폴더의 경로정보 얻어옴
 		String readFolder = request.getSession()

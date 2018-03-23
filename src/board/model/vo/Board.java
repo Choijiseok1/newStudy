@@ -18,13 +18,23 @@ public class Board implements java.io.Serializable{
 	private int boardReadCount; //읽은 조회수
 	private Date boardDate;     //작성날짜
 	
-	public Board() {}	
+	public Board() {}		
 	
 	public Board(int boardNum, String boardTitle, String boardContent) {
 		super();
 		this.boardNum = boardNum;
 		this.boardTitle = boardTitle;
 		this.boardContent = boardContent;
+	}	
+	
+	public Board(int boardNum, String boardTitle, String boardContent, String boardOriginalFileName,
+			String boardRenameFileName) {
+		super();
+		this.boardNum = boardNum;
+		this.boardTitle = boardTitle;
+		this.boardContent = boardContent;
+		this.boardOriginalFileName = boardOriginalFileName;
+		this.boardRenameFileName = boardRenameFileName;
 	}
 
 	public Board(int boardNum, String boardWriter, String boardTitle, String boardContent, String boardOriginalFileName,

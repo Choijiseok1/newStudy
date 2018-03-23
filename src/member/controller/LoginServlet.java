@@ -13,15 +13,15 @@ import member.model.vo.Member;
  */
 //@WebServlet("/login")
 public class LoginServlet extends HttpServlet {
-	//서블릿은 http서블릿을 상속받은 후손이다.
+	//서블릿은 반드시 HttpServlet 을 상속받은 후손클래스여야 함
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
     public LoginServlet() {
-       super();        
-       System.out.println("로그인 서블릿 ");
+       super();  
+       System.out.println("LoginServlet 객체 생성됨...");
     }
 
 	/**
@@ -29,14 +29,19 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-	
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		System.out.println("LoginServlet 의 doGet() run...");
+		
+		 //로그인 요청 처리용 컨트롤러
     	//System.out.println("로그인 서블릿 구동됨...")
     	//1. 전송온 값에 한글이 있을경우 인코딩 처리함.
-    
+        //request.setCharacterEncoding("utf-8");
+		//CommonFilter 가 처리했으므로 필요없음.
+        
         //2. 전송온 값 꺼내서 변수에 저장하기
         String userId = request.getParameter("userid");
         String userPwd = request.getParameter("userpwd");
-        System.out.println("아이디 : " + userId + "암호 : " + userPwd);
+        //System.out.println("아이디 : " + userId + "암호 : " + userPwd);
         
         //3. 비즈니스 로직을 처리할 서비스 모델 클래스의
         //로그인 처리용 메소드로 값을 전달하고, 결과를 받음.

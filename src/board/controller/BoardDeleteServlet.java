@@ -1,4 +1,4 @@
-package src.board.controller;
+package board.controller;
 
 import java.io.IOException;
 
@@ -10,11 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import board.model.service.BoardService;
- 
+
 /**
  * Servlet implementation class BoardDeleteServlet
  */
-@WebServlet("/bdelete")
+@WebServlet("/bdelete.ss")
 public class BoardDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

@@ -33,7 +33,7 @@ public class MemberInsertServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//회원 가입 처리용 컨트롤러
 		//1. 전송 온 값에 한글이 있을때, 인코딩 처리함
-		request.setCharacterEncoding("utf-8");
+		//request.setCharacterEncoding("utf-8");
 				
 		//2. 전송 온 값 꺼내서 변수에 또는 객체 안에 기록 저장하기.
 		Member member = new Member();

@@ -40,7 +40,8 @@ public class BoardUpdateViewServlet extends HttpServlet {
 		response.setContentType("text/html; charset=utf-8");
 		RequestDispatcher view = null;
 		if(board != null) {
-			view = request.getRequestDispatcher("views/board/boardUpdateView.jsp");
+			view = request.getRequestDispatcher(
+					"views/board/boardUpdateView.jsp");
 			request.setAttribute("board", board);
 			request.setAttribute("page", new Integer(currentPage));
 			view.forward(request, response);			

@@ -24,7 +24,7 @@ import board.model.vo.Board;
 /**
  * Servlet implementation class BoardInsertServlet
  */
-@WebServlet("/binsert")
+@WebServlet("/binsert.ss")
 public class BoardInsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -43,7 +43,7 @@ public class BoardInsertServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// 게시글 원글 등록 처리용 컨트롤러
-		request.setCharacterEncoding("utf-8");
+		//request.setCharacterEncoding("utf-8");
 		
 		// 업로드할 파일의 용량 제한 : 10Mbyte로 제한한다면
 		int maxSize = 1024 * 1024 * 10;
