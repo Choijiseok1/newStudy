@@ -1,4 +1,4 @@
-package board.controller;
+package src.board.controller;
 
 import java.io.IOException;
 
@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import board.model.service.BoardService;
-import board.model.vo.Board;
+import src.board.model.service.BoardService;
+import src.board.model.vo.Board;
 
 /**
  * Servlet implementation class BoardUpdateViewServlet

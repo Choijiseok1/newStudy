@@ -1,4 +1,4 @@
-package notice.controller;
+package src.notice.controller;
 
 import java.io.*;
 import javax.servlet.*;

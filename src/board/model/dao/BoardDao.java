@@ -1,11 +1,11 @@
-﻿package board.model.dao;
+﻿package src.board.model.dao;
 
 import java.sql.*;
 import java.util.ArrayList;
 
-import board.model.vo.Board;
+import src.board.model.vo.Board;
 
-import static common.JDBCTemplate.*;
+import static src.common.JDBCTemplate.*;
 
 public class BoardDao {
 	public BoardDao() {}

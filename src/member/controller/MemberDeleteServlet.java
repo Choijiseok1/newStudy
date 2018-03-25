@@ -1,4 +1,4 @@
-package member.controller;
+package src.member.controller;
 
 import java.io.IOException;
 
@@ -7,7 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 
-import member.model.service.MemberService;
+import src.member.model.service.MemberService;
 
 /**
  * Servlet implementation class MemberDeleteServlet

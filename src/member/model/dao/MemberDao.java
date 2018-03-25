@@ -1,10 +1,10 @@
-package member.model.dao;
+package src.member.model.dao;
 
 import java.sql.*;
 import java.util.ArrayList;
 
-import member.model.vo.Member;
-import static common.JDBCTemplate.*;
+import src.member.model.vo.Member;
+import static src.common.JDBCTemplate.*;
 
 public class MemberDao {
 	public MemberDao() {

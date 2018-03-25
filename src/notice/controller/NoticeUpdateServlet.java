@@ -1,4 +1,4 @@
-package notice.controller;
+package src.notice.controller;
 
 import java.io.*;
 import java.text.*;
@@ -12,8 +12,8 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-import notice.model.service.NoticeService;
-import notice.model.vo.Notice;
+import src.notice.model.service.NoticeService;
+import src.notice.model.vo.Notice;
 
 /**
  * Servlet implementation class NoticeWriteServlet

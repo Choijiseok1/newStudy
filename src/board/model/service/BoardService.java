@@ -1,11 +1,11 @@
-package board.model.service;
+package src.board.model.service;
 
-import static common.JDBCTemplate.*;
+import static src.common.JDBCTemplate.*;
 import java.sql.*;
 import java.util.ArrayList;
 
-import board.model.dao.BoardDao;
-import board.model.vo.Board;
+import src.board.model.dao.BoardDao;
+import src.board.model.vo.Board;
 
 public class BoardService {
 	public BoardService() {}

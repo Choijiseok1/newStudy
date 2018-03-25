@@ -1,13 +1,13 @@
-package notice.model.service;
+package src.notice.model.service;
 
 import java.util.*;
 import java.sql.*;
 import java.sql.Date;
 
-import static common.JDBCTemplate.*;
+import static src.common.JDBCTemplate.*;
 
-import notice.model.dao.NoticeDao;
-import notice.model.vo.Notice;
+import src.notice.model.dao.NoticeDao;
+import src.notice.model.vo.Notice;
 
 public class NoticeService {
 	

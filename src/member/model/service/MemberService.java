@@ -1,8 +1,8 @@
-package member.model.service;
+package src.member.model.service;
 
-import member.model.dao.MemberDao;
-import member.model.vo.Member;
-import static common.JDBCTemplate.*;
+import src.member.model.dao.MemberDao;
+import src.member.model.vo.Member;
+import static src.common.JDBCTemplate.*;
 import java.sql.*;
 import java.util.ArrayList;
 

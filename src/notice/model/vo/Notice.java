@@ -1,4 +1,4 @@
-package notice.model.vo;
+package src.notice.model.vo;
 
 import java.sql.*;
 

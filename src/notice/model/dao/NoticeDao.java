@@ -1,11 +1,11 @@
-package notice.model.dao;
+package src.notice.model.dao;
 
 import java.sql.*;
 import java.sql.Date;
 import java.util.*;
-import static common.JDBCTemplate.*;
+import static src.common.JDBCTemplate.*;
 
-import notice.model.vo.Notice;
+import src.notice.model.vo.Notice;
 
 public class NoticeDao {
 	

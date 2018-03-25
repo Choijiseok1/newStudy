@@ -1,4 +1,4 @@
-package member.controller;
+package src.member.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import member.model.service.MemberService;
-import member.model.vo.Member;
+import src.member.model.service.MemberService;
+import src.member.model.vo.Member;
 
 /**
  * Servlet implementation class MemberListServlet

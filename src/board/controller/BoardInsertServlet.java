@@ -1,4 +1,4 @@
-package board.controller;
+package src.board.controller;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -13,13 +13,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-import board.model.service.BoardService;
-import board.model.vo.Board;
+import src.board.model.service.BoardService;
+import src.board.model.vo.Board;
 
 /**
  * Servlet implementation class BoardInsertServlet

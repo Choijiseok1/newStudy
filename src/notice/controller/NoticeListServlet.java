@@ -1,4 +1,4 @@
-package notice.controller;
+package src.notice.controller;
 
 import java.io.IOException;
 import java.util.List;
@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import notice.model.service.NoticeService;
-import notice.model.vo.Notice;
+import src.notice.model.service.NoticeService;
+import src.notice.model.vo.Notice;
 
 /**
  * Servlet implementation class NoticeListServlet

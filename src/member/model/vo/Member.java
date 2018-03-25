@@ -1,4 +1,4 @@
-package member.model.vo;
+package src.member.model.vo;
 
 import java.sql.*;
 

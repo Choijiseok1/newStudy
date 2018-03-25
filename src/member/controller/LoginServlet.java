@@ -1,12 +1,12 @@
-package member.controller;
+package src.member.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 
-import member.model.service.MemberService;
-import member.model.vo.Member;
+import src.member.model.service.MemberService;
+import src.member.model.vo.Member;
 
 /**
  * Servlet implementation class LogInServlet

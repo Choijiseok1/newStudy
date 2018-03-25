@@ -1,4 +1,4 @@
-package common;
+package src.common;
 
 import java.io.*;
 import java.sql.*;
