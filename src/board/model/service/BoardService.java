@@ -109,7 +109,14 @@ public class BoardService {
 		close(con);
 		return result;
 	}
-	
+	public ArrayList<Board> selectTop3(){
+		Connection con = getConnection();
+		ArrayList<Board> bo=new BoardDao().selectTop3(con);
+		
+		close(con);
+		return bo;
+		
+	}
 }
 
 

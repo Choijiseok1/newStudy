@@ -4,6 +4,8 @@ import java.sql.*;
 import java.util.ArrayList;
 
 import member.model.vo.Member;
+import oracle.net.aso.r;
+
 import static common.JDBCTemplate.*;
 
 public class MemberDao {
@@ -205,6 +207,28 @@ public class MemberDao {
 		}
 		
 		return list;
+	}
+
+	public int checkId(Connection con, String parameter) {
+		PreparedStatement pstmt=null;
+		ResultSet rset = null;
+		int re=0;
+		String query = "select * from member where USERID = ?";
+		try {
+			pstmt=con.prepareStatement(query);
+			pstmt.setString(1, parameter);
+			rset=pstmt.executeQuery();
+			if(rset.next()) {
+				re=100;
+			}
+		} catch (Exception e) {
+		e.printStackTrace();
+		}finally {
+			close(pstmt);
+			close(rset);
+		}
+		
+		return re;
 	}
 	
 }

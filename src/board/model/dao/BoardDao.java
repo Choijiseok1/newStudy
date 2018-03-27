@@ -331,6 +331,35 @@ public class BoardDao {
 		
 		return result;
 	}
+
+	public ArrayList<Board> selectTop3(Connection con) {
+		PreparedStatement pstmt = null;
+		ArrayList<Board> bo=new ArrayList<Board>();
+		ResultSet rset=null;
+		String query="select * from board order by  BOARD_READCOUNT desc";
+		try {
+			pstmt=con.prepareStatement(query);
+			rset=pstmt.executeQuery();
+			rset.next();
+			for(int i=0; i<3;i++) {
+				Board bo1=new Board();
+				bo1.setBoardNum(rset.getInt("board_num"));
+				bo1.setBoardTitle(rset.getString("BOARD_TITLE"));
+				bo1.setBoardWriter(rset.getString("BOARD_WRITER"));
+				bo1.setBoardDate(rset.getDate("BOARD_DATE"));
+				bo1.setBoardReadCount(rset.getInt("BOARD_READCOUNT"));
+				bo.add(bo1);
+				rset.next();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}		
+		System.out.println(bo.size());
+		return bo;
+	}
 }
 
 

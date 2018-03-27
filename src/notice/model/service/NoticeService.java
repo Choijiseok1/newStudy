@@ -95,4 +95,11 @@ public class NoticeService {
 		return list;
 	}
 
+	public ArrayList<Notice> selectTop3() {
+		Connection con = getConnection();
+		ArrayList<Notice> no=new NoticeDao().selectTop3(con);
+		close(con);
+		return no;
+	}
+
 }

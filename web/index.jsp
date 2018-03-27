@@ -11,6 +11,67 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script type="text/javascript" src="/first/resources\js\jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+setInterval(function(){
+	$.ajax({
+	url:"btop3",
+	data:{no:"33"},
+	type:"post",
+	dataType:"json",
+	success:function(data){
+    var jsonStr=JSON.stringify(data);
+    var json= JSON.parse(jsonStr);
+    $("#p2").empty();
+    var values="";
+    for(var i in json.list){
+    values +=
+		"<tr><th>"+
+		json.list[i].board_num + "</th><td><a href='bdetail?bnum="+json.list[i].board_num+"&page=1'>" + 
+		json.list[i].BOARD_TITLE + "</a></td><td> " + 
+		json.list[i].bOARD_WRITER+ "</td><td> " +
+		json.list[i].BOARD_DATE + "</td><td> " + 
+		json.list[i].BOARD_READCOUNT + "</td></tr>";
+	}
+	$("#p2").append(values);
+	
+	},
+	error:function(a,b,c){
+		console.log(b+"and"+c)
+	}});
+$(function(){
+	$.ajax({
+		url:"/first/ntop3",
+		data:{no:"22"},
+		type:"post",
+		dataType:"json",
+		success:function(data){
+		var jsonStr=JSON.stringify(data);
+		var json= JSON.parse(jsonStr);
+		$("#p3").empty();
+		 var values="";
+
+		for(var i in json.list){
+		    values +=
+				"<tr><th>"+
+				json.list[i].NOTICENO + "</th><td><a href='ndetail?no="+json.list[i].NOTICENO+"'>" + 
+				json.list[i].NOTICETITLE + "</a></td><td> " + 
+				json.list[i].NOTICEDATE+ "</td><td> " +
+				json.list[i].NOTICEWRITER + "</td><td> " + 
+				json.list[i].NOTICECONTENT + "</td></tr>";
+			}
+			$("#p3").append(values);
+		
+		
+		},
+		error:function(a,b,c){
+		console.log(b+c);		
+		}
+	})
+})
+
+},3000);
+</script>
 <meta charset="UTF-8">
 <title>first</title>
 <link href="resources/css/header.css" rel="stylesheet" type="text/css">
@@ -70,6 +131,27 @@
    <% } %>
    
    <hr style="clear:both;"> <br>
+   <!--  게시글 조회수 상쉬 3개의 목록만 목록보기 형식으로 출력되게 ajax을 이용하여 구현하기. 요청 url="btop3" -->
+  
+  <table border="1" style="width: 300px; height:200px; ">
+  
+  	<tr><th>게시번호</th><th>작성자</th><th>작성날</th><th>제목</th><th>조회수</th></tr>
+  <tbody id="p2" >
+
+  	
+ 	 </tbody>
+  	
+ 	 </table>
+  
+	&nbsp;
+   <table border="1" style="width: 300px; height:200px; ">
+   <tr><th>게시글번호</th><th>제목</th><th>작성날</th><th>작성자</th><th>내용</th></tr>
+   <tbody id="p3">
+   </tbody>
+   </table>
+   
+   
+   
    
    <%@ include file= "footer.html" %>
 	

@@ -1,8 +1,9 @@
-/member/
+/.DS_Store
+/board/
 /common/
 /filter/
-/src/
-/wrapper/
-/test/
-/board/
+/listener/
+/member/
 /notice/
+/test/
+/wrapper/

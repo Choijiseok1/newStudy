@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>회원가입</title>
-<script type="text/javascript" src = "/first/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="/first/js/jquery-3.3.1.min.js"></script>
 <style type="text/css">
    section form table th {
       background: orange;
@@ -12,14 +12,35 @@
    }
 </style>
 <script type="text/javascript">
-   function checkId(){
-      //ajax 사용 : 서버 컨트롤러와 아이디 중복 체크 확인 처리
-      alert("미완성 상태임");
-      return false; //일단 전송은 안되게 처리함
-   }
+
+    
+
 	
    $(function(){
 	 
+	 $("input[name=userid]").focusout(function(){
+	 //ajax 사용 : 서버 컨트롤러와 아이디 중복 체크 확인 처리
+	     $.ajax({
+	    	 url:"/first/checkid",
+	    	 data:{id:$('input[name=userid]').val()},
+	    	 type:"post",
+	    	 success:function(data){
+	    		 if(data=="no"){
+	    		 $("#33").css("color","red");
+				 $("#33").text("중복됨, 딴거하세요");
+	    		 }else if(data=="ok"){
+	    		 $("#33").css("color","black");
+	    		 $("#33").text("회원가입가능");
+	    		 }
+	    	 },
+	    	 error:function(a,b,c){
+	    		 console.log(b+c)
+	    	 }
+	     }  )  });
+	 $("input[name=userid]").focus(function(){
+		 //ajax 사용 : 서버 컨트롤러와 아이디 중복 체크 확인 처리
+		    		 $("#33").text("");
+	});
 	   $('input[type=password]').blur(function(){		   
 		   console.log("포커스 벗어남.");
 		   var pwd1 = $("#upwd").val();
@@ -58,8 +79,9 @@ ETC   VARCHAR2(1000 BYTE) -->
          <table width="650" align="center">
             <tr height="40">
                <th width="150">아이디</th>
-               <td><input type="text" name="userid" required> &nbsp;
-               <button onclick="checkId();">중복확인</button></td>
+               <td>
+               <input type="text" name="userid" required> &nbsp;
+             <label id="33"></label></td>
             </tr>
             <tr height="40">
                <th width="150">이름</th>

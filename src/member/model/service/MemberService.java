@@ -2,6 +2,8 @@ package member.model.service;
 
 import member.model.dao.MemberDao;
 import member.model.vo.Member;
+import oracle.net.aso.p;
+
 import static common.JDBCTemplate.*;
 import java.sql.*;
 import java.util.ArrayList;
@@ -74,5 +76,12 @@ public class MemberService {
 		close(con);
 		
 		return list;
+	}
+
+	public int checkId(String parameter) {
+		Connection con = getConnection();
+		int re=new MemberDao().checkId(con,parameter);
+		close(con);
+		return re;
 	}
 }

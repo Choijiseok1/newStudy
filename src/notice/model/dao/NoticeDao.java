@@ -189,4 +189,39 @@ public class NoticeDao {
 		
 		return list;
 	}
+
+	public ArrayList<Notice> selectTop3(Connection con) {
+	
+	ArrayList<Notice> no = null;
+	PreparedStatement pstmt = null;
+	ResultSet rset = null;
+		String query="select * from notice order by NOTICEDATE desc";
+		try {
+			pstmt=con.prepareStatement(query);
+			rset=pstmt.executeQuery();
+			if(rset.next()){
+				no=new ArrayList<Notice>();
+					for(int i=0; i<3;i++) {
+						Notice n = new Notice();
+						n.setNoticeNo(rset.getInt("noticeno"));
+						n.setNoticeTitle(rset.getString("noticetitle"));
+						n.setNoticeDate(rset.getDate("noticedate"));
+						n.setNoticeWriter(rset.getString("noticewriter"));
+						n.setNoticeContent(rset.getString("noticecontent"));
+						n.setOriginalFilePath(rset.getString("original_filepath"));
+						n.setRenameFilePath(rset.getString("rename_filepath"));
+						no.add(n);
+						rset.next();	
+					}
+			}
+		} catch (Exception e) {
+		e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		
+		return no;
+	}
 }
