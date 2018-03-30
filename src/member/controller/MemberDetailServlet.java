@@ -13,7 +13,7 @@ import member.model.vo.Member;
 /**
  * Servlet implementation class MemberDetailServlet
  */
-@WebServlet("/mdetail.ss")
+@WebServlet("/mdetail")
 public class MemberDetailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

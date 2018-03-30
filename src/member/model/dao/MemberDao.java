@@ -1,30 +1,40 @@
 package member.model.dao;
 
+import java.io.FileReader;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Properties;
 
 import member.model.vo.Member;
-import oracle.net.aso.r;
 
 import static common.JDBCTemplate.*;
 
 public class MemberDao {
+	private Properties prop;
 	public MemberDao() {
-		
+		prop=new Properties();
+		try {
+			prop.load(new FileReader(MemberDao.class.getResource("/dbresources/member.prop").getPath()));
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 	}
 	
 	public Member loginMember(Connection con, 
-			String userId, String userPwd) {
+		
+		String userId, String userPwd) {
+		
 		
 		Member loginUser = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
-		String query = "select * from member where userid= ? "
-				+ "and userpwd = ?";
+		//String query = "select * from member where userid= ? "
+		//		+ "and userpwd = ?";
 		
 		try {
-			pstmt = con.prepareStatement(query);
+			pstmt = con.prepareStatement(prop.getProperty("loginMember"));
 			pstmt.setString(1, userId);
 			pstmt.setString(2, userPwd);
 			
@@ -62,11 +72,11 @@ public class MemberDao {
 		int result = 0;
 		PreparedStatement pstmt = null;
 		
-		String query = "insert into member values (?, ?, ?, ?, ?, ?, ?, ?, ?, sysdate, sysdate)";
+		//String query = "insert into member values (?, ?, ?, ?, ?, ?, ?, ?, ?, sysdate, sysdate)";
 		
 		 try {
 			 
-			pstmt = con.prepareStatement(query);
+			pstmt = con.prepareStatement(prop.getProperty("insertMember"));
 			pstmt.setString(1, member.getUserId());
 			pstmt.setString(2, member.getUserPwd());
 			pstmt.setString(3, member.getUserName());
@@ -91,12 +101,12 @@ public class MemberDao {
 	public int updateMember(Connection con, Member member) {
 		int result = 0;
 		PreparedStatement pstmt = null;		
-		String query = "update member set userpwd = ?, age = ?, "
-				+ "phone = ?, email = ?, hobby = ?, etc = ?, "
-				+ "lastmodified = sysdate where userid = ?";
+		//String query = "update member set userpwd = ?, age = ?, "
+		//		+ "phone = ?, email = ?, hobby = ?, etc = ?, "
+		//		+ "lastmodified = sysdate where userid = ?";
 		
 		try {
-			pstmt = con.prepareStatement(query);
+			pstmt = con.prepareStatement(prop.getProperty("updateMember"));
 			pstmt.setString(1, member.getUserPwd());			
 			pstmt.setInt(2, member.getAge());
 			pstmt.setString(3, member.getPhone());
@@ -118,10 +128,10 @@ public class MemberDao {
 		int result = 0;	
 		PreparedStatement pstmt = null;
 		
-		String query = "delete from member where userid = ?";
+		//String query = "delete from member where userid = ?";
 		
 		try {
-			pstmt = con.prepareStatement(query);
+			pstmt = con.prepareStatement(prop.getProperty("deleteMember"));
 			pstmt.setString(1, userId);
 			
 			result = pstmt.executeUpdate();
@@ -142,7 +152,7 @@ public class MemberDao {
 		String query = "select * from member where userid = ?";
 		
 		try {
-			pstmt = con.prepareStatement(query);
+			pstmt = con.prepareStatement(prop.getProperty("selectMember"));
 			pstmt.setString(1, userId);
 			
 			rset = pstmt.executeQuery();
@@ -181,7 +191,7 @@ public class MemberDao {
 		
 		try {
 			stmt = con.createStatement();
-			rset = stmt.executeQuery(query);
+			rset = stmt.executeQuery(prop.getProperty("selectList"));
 			
 			while(rset.next()) {
 				Member m = new Member();
@@ -215,7 +225,7 @@ public class MemberDao {
 		int re=0;
 		String query = "select * from member where USERID = ?";
 		try {
-			pstmt=con.prepareStatement(query);
+			pstmt=con.prepareStatement(prop.getProperty("checkId"));
 			pstmt.setString(1, parameter);
 			rset=pstmt.executeQuery();
 			if(rset.next()) {

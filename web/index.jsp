@@ -71,6 +71,7 @@ $(function(){
 })
 
 setInterval(function(){
+	
 	$.ajax({
 	url:"btop3",
 	data:{no:"33"},
@@ -111,7 +112,7 @@ setInterval(function(){
 		for(var i in json.list){
 		    values +=
 				"<tr><th>"+
-				json.list[i].NOTICENO + "</th><td><a href='ndetail?no="+json.list[i].NOTICENO+"'>" + 
+				json.list[i].NOTICENO + "</th><td><a href='ndetail?no="+json.list[i].NOTICENO+"&action=loginCheck'>" + 
 				json.list[i].NOTICETITLE + "</a></td><td> " + 
 				json.list[i].NOTICEDATE+ "</td><td> " +
 				json.list[i].NOTICEWRITER + "</td><td> " + 
@@ -179,7 +180,7 @@ setInterval(function(){
          		href="대상이름?이름=전송값/값이 여러개 일 경우 구분자는 &
          		ex) 이름=값&이름=값&이름=값...
          		a 태그는 전송방식이 무조건 get이다. -->
-            <td><a href="/first/mdetail?userid=<%= loginUser.getUserId() %>">내 정보 보기</a></td>
+            <td><a href="/first/mdetail?userid=<%=loginUser.getUserId()%>">내 정보 보기</a></td>
             <td>&nbsp;</td>
          </tr>
       </table>

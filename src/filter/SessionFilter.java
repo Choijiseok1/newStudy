@@ -43,8 +43,10 @@ public class SessionFilter implements Filter {
 		HttpServletRequest hRequest = (HttpServletRequest)request;
 		
 		String action = request.getParameter("action");
-		if(action != null && action.equals("ss") == true) {
-			if(hRequest.getSession().getAttribute("loginUser") == null) {
+		
+		if(action != null && action.equals("loginCheck") == true) {
+			String loginCheck=(String)hRequest.getSession().getAttribute("loginUser");
+			if(loginCheck==null){
 				RequestDispatcher view = hRequest.getRequestDispatcher("views/member/memberError.jsp");
 				request.setAttribute("message", "로그인하셔야 합니다.");
 				view.forward(request, response);

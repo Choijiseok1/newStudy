@@ -1,8 +1,8 @@
 package common;
 
-import java.io.*;
+import java.io.FileReader;
 import java.sql.*;
-import java.util.*;
+import java.util.Properties;
 
 import javax.naming.*;
 import javax.sql.*;
@@ -31,21 +31,43 @@ public class JDBCTemplate {
 	}*/
 	
 	//DB Connection Pooling 기법을 이용
+//	public static Connection getConnection() {
+//		
+//		Connection con = null;
+//		
+//		try {
+//			Context initContext = new InitialContext();
+//			DataSource ds = (DataSource)initContext.lookup("java:comp/env/jdbc/oraDB");
+//			con = ds.getConnection();
+//			con.setAutoCommit(false);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			/*System.out.println("JDBCTemplate.getConnection() : "
+//								+e.getMessage());*/
+//		}
+//		
+//		return con;
+//	}
 	public static Connection getConnection() {
-		
-		Connection con = null;
-		
+		Connection con=null;
+		Properties prop=new Properties();
+		String fileName=JDBCTemplate.class.getResource("/dbresources/drive.propertices").getPath();
+		System.out.println("fileName="+fileName);
+		System.out.println("url="+JDBCTemplate.class.getResource("/dbresources/drive.propertices"));
 		try {
-			Context initContext = new InitialContext();
-			DataSource ds = (DataSource)initContext.lookup("java:comp/env/jdbc/oraDB");
-			con = ds.getConnection();
-			con.setAutoCommit(false);
+			prop.load(new FileReader(fileName));
+			Class.forName(prop.getProperty("driver"));
+			con=DriverManager.getConnection(
+					prop.getProperty("url"),
+					prop.getProperty("user"),
+					prop.getProperty("passwd")				
+					);
+					
+			
+			
 		} catch (Exception e) {
-			e.printStackTrace();
-			/*System.out.println("JDBCTemplate.getConnection() : "
-								+e.getMessage());*/
+			// TODO: handle exception
 		}
-		
 		return con;
 	}
 	
