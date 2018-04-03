@@ -8,7 +8,6 @@
 	int endPage = ((Integer)request.getAttribute("endPage")).intValue();
 	int maxPage = ((Integer)request.getAttribute("maxPage")).intValue();			
 	int currentPage = ((Integer)request.getAttribute("currentPage")).intValue();
-	
 	Member loginUser = (Member)session.getAttribute("loginUser");
 %>   
 <!DOCTYPE html>
